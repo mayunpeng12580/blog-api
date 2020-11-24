@@ -19,8 +19,9 @@ router.post( '/uploadImage' , uploadImage.single('file'), function (req, res) {
     fs.rename(oldPath, newPath, () => {
        
 
-        let imgUrl = __dirname.substring(0, __dirname.length-6) + newPath.substring(2);
-        console.log(imgUrl)
+        // let imgUrl = __dirname.substring(0, __dirname.length-6) + newPath.substring(2);
+        let imgUrl = "http://127.0.0.1:9000/" + newPath.substring(2)
+        
 
         let data = {
             code: 200,

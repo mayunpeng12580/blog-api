@@ -1,6 +1,7 @@
 const server = require('express');
 const app = server();
 const bodyParser = require("body-parser");
+var path = require('path')
 
 //使用body-parser中间件
 app.use(bodyParser.json());
@@ -48,6 +49,10 @@ app.use("/api/route",route);
 //引入auth.js
 const auth = require("./router/auth");
 app.use("/api/auth",auth);
+
+app.get('/public/upload/:path', function (req, res, next) {
+  res.sendFile(path.join(__dirname, req.path));
+})
 
 app.listen('9000', ()=> {
     
